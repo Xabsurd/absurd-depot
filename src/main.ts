@@ -5,8 +5,8 @@ import App from './App.vue';
 import router from './router';
 import { i18n } from './stores/setting';
 // import ElementPlus from 'element-plus';
-import 'element-plus/dist/index.css';
-import 'element-plus/theme-chalk/dark/css-vars.css';
+// import 'element-plus/dist/index.css';
+
 import component from './components';
 import './assets/styles/main.scss';
 

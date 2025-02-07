@@ -35,3 +35,5 @@ src/components/icons/dynamicIcons
 .env
 .husky\_
 .vscode
+components.d.ts
+auto-imports.d.ts

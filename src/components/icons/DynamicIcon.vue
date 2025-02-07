@@ -4,9 +4,15 @@
 <script setup lang="ts">
 import { addIcon } from '@iconify/vue';
 import { Icon } from '@iconify/vue';
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 const props = defineProps<{ icon: string }>();
 const dynamicIcon = ref('mdi-account');
+watch(
+  () => props.icon,
+  async () => {
+    dynamicIcon.value = await loadIcon(props.icon);
+  }
+);
 (async () => {
   dynamicIcon.value = await loadIcon(props.icon);
 })();
@@ -16,7 +22,7 @@ async function loadIcon(iconName: string) {
     switch (collection) {
       case 'mingcute':
         const path = import.meta.env.VITE_APP_PACKAGE_PATH + `/@iconify-icons/mingcute/${name}.js`;
-        const icon = await import(new URL(path, import.meta.url).href);
+        const icon = await import(/* @vite-ignore */ new URL(path, import.meta.url).href);
         addIcon(iconName, icon.default);
         return iconName;
       default:

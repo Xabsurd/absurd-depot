@@ -6,7 +6,6 @@
 
 <script lang="ts" setup>
 import CreateMenu from './components/CreateMenu.vue';
-import { ElMenu } from 'element-plus';
 import menuMap from '../../router/menuMap';
 import { useSettingStore } from '@/stores/setting';
 import { useRoute } from 'vue-router';

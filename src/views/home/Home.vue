@@ -207,10 +207,10 @@ function initChart(data: Dashboard) {
     <!-- <div>{{ state.dashboard }}</div> -->
     <div class="dashboard">
       <el-row :gutter="24">
-        <el-col :span="6" :md="6" :sm="12" :xs="12">
+        <el-col :span="6" :lg="6" :sm="12" :xs="24">
           <DynamicButtons class="total-cell large">
             <div class="total-cell-content">
-              <i class="iconfont icon-file-text"></i>
+              <DynamicIcon :icon="'mingcute:text-2-fill'"></DynamicIcon>
               <div>
                 <p>lines</p>
                 <p>{{ state.dashboard?.total.total }}</p>
@@ -218,10 +218,10 @@ function initChart(data: Dashboard) {
             </div>
           </DynamicButtons>
         </el-col>
-        <el-col :span="6" :md="6" :sm="12" :xs="12">
+        <el-col :span="6" :lg="6" :sm="12" :xs="24">
           <DynamicButtons class="total-cell large danger">
             <div class="total-cell-content">
-              <i class="iconfont icon-code"></i>
+              <DynamicIcon :icon="'mingcute:code-fill'"></DynamicIcon>
               <div>
                 <p>code</p>
                 <p>{{ state.dashboard?.total.code }}</p>
@@ -229,10 +229,10 @@ function initChart(data: Dashboard) {
             </div>
           </DynamicButtons>
         </el-col>
-        <el-col :span="6" :md="6" :sm="12" :xs="12">
+        <el-col :span="6" :lg="6" :sm="12" :xs="24">
           <DynamicButtons class="total-cell large success">
             <div class="total-cell-content">
-              <i class="iconfont icon-comment"></i>
+              <DynamicIcon :icon="'mingcute:command-fill'"></DynamicIcon>
               <div>
                 <p>comment</p>
                 <p>{{ state.dashboard?.total.comment }}</p>
@@ -240,10 +240,10 @@ function initChart(data: Dashboard) {
             </div>
           </DynamicButtons>
         </el-col>
-        <el-col :span="6" :md="6" :sm="12" :xs="12">
+        <el-col :span="6" :lg="6" :sm="12" :xs="24">
           <DynamicButtons class="total-cell large warning">
             <div class="total-cell-content">
-              <i class="iconfont icon-folder-open"></i>
+              <DynamicIcon :icon="'mingcute:file-code-line'"></DynamicIcon>
               <div>
                 <p>files</p>
                 <p>{{ state.dashboard?.total.files }}</p>
@@ -281,21 +281,21 @@ function initChart(data: Dashboard) {
         align-items: center;
         justify-content: center;
         i {
-          font-size: 3rem;
+          font-size: 4.5rem;
           margin-right: 1rem;
-          width: 3rem;
-          height: 3rem;
+          width: 4.5rem;
+          height: 4.5rem;
         }
         > div {
           display: flex;
           flex-direction: column;
           p:nth-child(1) {
-            font-size: 1rem;
+            font-size: 1.5rem;
             font-weight: 600;
             opacity: 0.6;
           }
           p:nth-child(2) {
-            font-size: 2rem;
+            font-size: 3rem;
             font-weight: 600;
             // line-height: 4rem;
           }

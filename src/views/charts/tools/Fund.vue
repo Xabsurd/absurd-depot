@@ -14,7 +14,7 @@
         <div class="chart-title-item" v-for="(item, index) in FundData" :key="index">
           {{ index }}:{{ item.base.fS_name }}
           <div class="chart-close" @click="removeFund(index)">
-            <i class="iconfont icon-guanbi"></i>
+            <DynamicIcon :icon="'mingcute:close-fill'"></DynamicIcon>
           </div>
         </div>
       </div>
@@ -100,6 +100,7 @@ import chartThemes from '../chartThemes';
 import echarts from '@/utils/customEcharts/line';
 import type { TitleComponentOption } from 'echarts';
 import EstimationValueChart from './EstimationValueChart.vue';
+import DynamicIcon from '@/components/icons/DynamicIcon.vue';
 const FundData = reactive<{
   [key: string]: {
     base: FundBaseData;
@@ -187,7 +188,7 @@ function addFund(code: string) {
     });
   }
 }
-function removeFund(code:string) {
+function removeFund(code: string) {
   delete FundData[code];
   // this.changeData();
   const fundList = [];

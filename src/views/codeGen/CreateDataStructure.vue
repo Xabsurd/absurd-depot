@@ -194,14 +194,14 @@ function close() {
         <template #default="scope">
           <el-tooltip :content="t('operation.delete')" placement="top">
             <el-button @click="removeFieldItem(scope.$index)" link type="danger">
-              <i class="iconfont icon-guanbi"></i>
+              <DynamicIcon :icon="'mingcute:close-fill'"></DynamicIcon>
             </el-button>
           </el-tooltip>
         </template>
       </el-table-column>
     </el-table>
     <div class="add-field" @click="addFieldItem" v-if="_type !== 'view'">
-      <i class="iconfont icon-plus-square"></i>
+      <dynamic-icon :icon="'mingcute:add-fill'"></dynamic-icon>
     </div>
     <template #footer>
       <span class="dialog-footer">

@@ -28,7 +28,6 @@
 </template>
 <script lang="ts" setup>
 import type { MessageSchema } from '@/types/schema';
-import { ElSubMenu, ElMenuItem } from 'element-plus';
 import { useI18n } from 'vue-i18n';
 const { t } = useI18n<{ mesasge: MessageSchema }>();
 const props = withDefaults(

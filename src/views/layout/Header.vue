@@ -1,30 +1,37 @@
 <template>
   <header id="header">
-    <!-- <i
-      class="iconfont"
-      :class="settingStore.menuCollapse ? 'icon-indent' : 'icon-outdent'"
-      id="Collapse"
+    <DynamicIcon
+      :icon="
+        settingStore.menuCollapse
+          ? 'mingcute:indent-increase-fill'
+          : 'mingcute:indent-decrease-fill'
+      "
       @click="changeMenuCollapse"
-    ></i>
-    <i
-      class="full iconfont"
-      :class="[settingStore.fullScreen === 3 ? 'icon-fullscreen-exit' : 'icon-fullscreen']"
+    ></DynamicIcon>
+    <DynamicIcon
+      :icon="
+        settingStore.fullScreen === 3 ? 'mingcute:fullscreen-exit-fill' : 'mingcute:fullscreen-fill'
+      "
+      class="full"
       @click="fullClick"
-    ></i>
-    <i
-      class="full iconfont"
-      :class="[settingStore.fullScreen === 1 ? 'icon-compress' : 'icon-expend']"
+    ></DynamicIcon>
+
+    <DynamicIcon
+      :icon="
+        settingStore.fullScreen === 1
+          ? 'mingcute:fullscreen-exit-2-fill'
+          : 'mingcute:fullscreen-2-fill'
+      "
+      class="full"
       @click="bodyFull"
-    ></i> -->
-    <Icon :icon="'mingcute:indent-decrease-fill'"></Icon>
+    ></DynamicIcon>
   </header>
 </template>
 <script setup lang="ts">
 import { ElMessage } from 'element-plus';
-import { getCurrentInstance } from 'vue';
+// import { getCurrentInstance } from 'vue';
 import { useSettingStore } from '@/stores/setting';
-import Icon from '@/components/icons/DynamicIcon.vue';
-const test = getCurrentInstance();
+// const test = getCurrentInstance();
 const settingStore = useSettingStore();
 function changeMenuCollapse() {
   settingStore.menuCollapse = !settingStore.menuCollapse;

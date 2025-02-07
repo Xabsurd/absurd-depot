@@ -1,19 +1,15 @@
 <script setup lang="ts">
-import { reactive, defineProps, ref, nextTick } from 'vue';
+import { reactive, ref } from 'vue';
 import DataStructure from './DataStructure.vue';
 // import { type CodeViewer } from './CodeViewer.vue';
 import CodeGeneration, { GenerationType } from '@/utils/codeGeneration/codeGeneration';
 import { defineAsyncComponent } from 'vue';
-
 //此组件过大，需要异步加载
 const CodeViewer = defineAsyncComponent(() => import('./CodeViewer.vue'));
 const CodeViewerRef = ref<InstanceType<typeof CodeViewer>>();
 const state = reactive({
   codeViewerVisible: false
 });
-const props = defineProps<{
-  type?: string;
-}>();
 const codeGeneration = new CodeGeneration();
 let code:
   | {
@@ -43,7 +39,11 @@ function handleCodeViewerLoaded() {
     ></CodeViewer>
     <DataStructure v-show="!state.codeViewerVisible" @generate="handleGenerateCode"></DataStructure>
     <el-tooltip content="关闭代码预览" placement="top" v-if="state.codeViewerVisible">
-      <i class="close-CodeViewer iconfont icon-guanbi" @click="state.codeViewerVisible = false"></i>
+      <DynamicIcon
+        class="close-CodeViewer"
+        :icon="'mingcute:close-fill'"
+        @click="state.codeViewerVisible = false"
+      ></DynamicIcon>
     </el-tooltip>
   </div>
 </template>
