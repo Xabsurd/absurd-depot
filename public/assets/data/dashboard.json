@@ -1,0 +1,134 @@
+{
+  "languages": [
+    {
+      "name": "vue",
+      "files": 20,
+      "code": 1924,
+      "comment": 15,
+      "blank": 66,
+      "total": 2005
+    },
+    {
+      "name": "TypeScript",
+      "files": 37,
+      "code": 1682,
+      "comment": 221,
+      "blank": 92,
+      "total": 1995
+    },
+    {
+      "name": "JSON",
+      "files": 2,
+      "code": 274,
+      "comment": 0,
+      "blank": 3,
+      "total": 277
+    },
+    {
+      "name": "SCSS",
+      "files": 4,
+      "code": 210,
+      "comment": 6,
+      "blank": 7,
+      "total": 223
+    },
+    {
+      "name": "CSS",
+      "files": 1,
+      "code": 1,
+      "comment": 0,
+      "blank": 0,
+      "total": 1
+    }
+  ],
+  "total": {
+    "total": 6502,
+    "code": 5879,
+    "comment": 368,
+    "blank": 255,
+    "files": 83
+  },
+  "history": [
+    {
+      "date": "2024-05-08",
+      "total": 3201,
+      "code": 2891,
+      "comment": 182,
+      "blank": 118,
+      "files": 64
+    },
+    {
+      "date": "2024-05-08",
+      "total": 3201,
+      "code": 2891,
+      "comment": 182,
+      "blank": 118,
+      "files": 64
+    },
+    {
+      "date": "2024-05-08",
+      "total": 3201,
+      "code": 2891,
+      "comment": 182,
+      "blank": 118,
+      "files": 64
+    },
+    {
+      "date": "2024-05-08",
+      "total": 3201,
+      "code": 2891,
+      "comment": 182,
+      "blank": 118,
+      "files": 64
+    },
+    {
+      "date": "2024-05-08",
+      "total": 3201,
+      "code": 2891,
+      "comment": 182,
+      "blank": 118,
+      "files": 64
+    },
+    {
+      "date": "2024-05-08",
+      "total": 3201,
+      "code": 2891,
+      "comment": 182,
+      "blank": 118,
+      "files": 64
+    },
+    {
+      "date": "2024-05-12",
+      "total": 3501,
+      "code": 3091,
+      "comment": 242,
+      "blank": 168,
+      "files": 64
+    },
+    {
+      "date": "2024-05-16",
+      "total": 4001,
+      "code": 3591,
+      "comment": 242,
+      "blank": 168,
+      "files": 64
+    },
+    {
+      "date": "2024-05-20",
+      "total": 4501,
+      "code": 4091,
+      "comment": 242,
+      "blank": 168,
+      "files": 64
+    },
+
+    {
+      "date": "2024-05-24",
+      "total": 6502,
+      "code": 5879,
+      "comment": 368,
+      "blank": 255,
+      "files": 83
+    }
+  ]
+}

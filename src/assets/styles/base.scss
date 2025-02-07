@@ -1,0 +1,61 @@
+html {
+  --header-bg-color: rgb(255, 255, 255);
+  --header-text-color: rgba(51, 51, 51);
+  --sider-bg-color: rgb(243, 243, 243);
+  --sider-text-color: rgba(51, 51, 51);
+  --sider-hover-color: rgb(221, 221, 221);
+  --content-bg-color: #fff;
+  --content-bg-color-light-3: rgba(255, 255, 255, 0.3);
+  --content-bg-color-light-5: rgba(255, 255, 255, 0.5);
+  --content-bg-color-anti: rgb(30, 30, 30);
+  --content-text-color: #000;
+  --menu-text-color: rgba(51, 51, 51);
+  --menu-text-color-light: rgba(51, 51, 51, 0.6);
+  /* 滚动条轨道颜色 */
+  --scrollbar-tarck-color: rgba(0, 0, 0, 0);
+  /* 滚动条滑块颜色 */
+  --scrollbar-thumb-color: rgba(51, 51, 51, 0.2);
+  --scrollbar-thumb-hover-color: rgba(51, 51, 51, 0.3);
+  --box-shadow-color: rgba(0, 0, 0, 0.2);
+  --box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  --header-height: 52px;
+  .el-popper.is-dark {
+    color: var(--sider-text-color);
+    background: var(--sider-bg-color);
+    box-shadow: var(--box-shadow);
+  }
+  .el-popper.is-dark .el-popper__arrow::before {
+    box-shadow: -2px 2px 5px -2px var(--box-shadow-color);
+    background: var(--sider-bg-color);
+  }
+  .el-menu {
+    --el-menu-hover-bg-color: var(--sider-hover-color) !important;
+  }
+
+  blockquote {
+    border-left: 2px solid #ccc;
+    margin-left: 1.5rem;
+    padding-left: 1rem;
+  }
+}
+html.dark {
+  --header-bg-color: rgb(50, 50, 51);
+  --header-text-color: rgba(204, 204, 204);
+  --sider-bg-color: rgb(37, 37, 38);
+  --sider-text-color: rgba(204, 204, 204);
+  --sider-hover-color: rgba(204, 204, 204, 0.3);
+  --content-bg-color: rgb(30, 30, 30);
+  --content-bg-color-light-3: rgb(30, 30, 30, 0.3);
+  --content-bg-color-light-5: rgb(30, 30, 30, 0.5);
+  --content-bg-color-anti: #fff;
+  --content-text-color: #d4d4d4;
+  --menu-text-color: rgba(204, 204, 204);
+  --menu-text-color-light: rgba(204, 204, 204, 0.6);
+  /* 滚动条轨道颜色 */
+  --scrollbar-tarck-color: rgba(0, 0, 0, 0);
+  /* 滚动条滑块颜色 */
+  --scrollbar-thumb-color: rgba(204, 204, 204, 0.2);
+  --scrollbar-thumb-hover-color: rgba(204, 204, 204, 0.3);
+  color-scheme: dark;
+  --el-bg-color: var(--content-bg-color);
+}

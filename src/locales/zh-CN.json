@@ -1,0 +1,172 @@
+{
+  "page": {
+    "home": {
+      "title": "首页",
+      "line-title": "代码量变更历史",
+      "bar-title": "每个语言的代码量"
+    },
+    "dashboard": "仪表盘",
+    "workshop": {
+      "title": "工作室",
+      "subTitle": "我的工作室"
+    },
+    "status": {
+      "loading": "加载中..."
+    },
+    "chart": {
+      "line": {
+        "functionLine": {
+          "functionText": "f(x)=(js代码)",
+          "functionName": "函数名称",
+          "defaultFunctionName": "测试函数",
+          "max": "最大值",
+          "min": "最小值",
+          "interval": "间隔值",
+          "smooth": "是否平滑",
+          "run": "运行",
+          "add": "添加"
+        },
+        "HomeLoans": {
+          "money": "贷款金额",
+          "interestRate": "贷款利率",
+          "interestRateTip": "不合法",
+          "loanTerm": "贷款期限",
+          "inflation": "通货膨胀率",
+          "type": "计算类型",
+          "typeY": "年",
+          "typeM": "月"
+        }
+      }
+    }
+  },
+  "component": {
+    "tableField": {
+      "name": "名称",
+      "alias": "别名",
+      "type": "类型",
+      "size": "大小",
+      "description": "描述",
+      "canNull": "是否允许为空"
+    },
+    "codeGen": {
+      "title": "代码生成",
+      "createDataStructure": {
+        "title_create": "创建数据结构",
+        "title_edit": "修改数据结构",
+        "title_view": "查看数据结构",
+        "save": "保存数据结构",
+        "error1": "名称不能为空",
+        "error2": "名称不能重复"
+      },
+      "DatabaseFieldTypes": {
+        "int": "整型",
+        "float": "浮点型",
+        "double": "双精度浮点型",
+        "char": "字符型",
+        "varchar": "字符串型",
+        "text": "文本型",
+        "date": "日期型",
+        "time": "时间型",
+        "datetime": "日期时间型",
+        "timestamp": "时间戳型",
+        "boolean": "布尔型",
+        "enum": "枚举型"
+      }
+    },
+    "wordType": {
+      "number": "数字",
+      "uppercase": "大写字母",
+      "lowercase": "小写字母",
+      "special": "特殊符号"
+    }
+  },
+  "label": {
+    "systemSetting": "系统设置",
+    "language": "语言",
+    "theme": "主题",
+    "light": "浅色",
+    "dark": "深色",
+    "operation": "操作",
+    "title": "标题",
+    "content": "内容",
+    "alias": "别名",
+    "tag": "标签",
+    "category": "分类",
+    "date": "日期",
+    "time": "时间",
+    "author": "作者",
+    "views": "阅读数",
+    "url": "链接",
+    "image": "图片",
+    "cover": "封面",
+    "status": "状态",
+    "draft": "草稿",
+    "published": "已发布",
+    "deleted": "已删除",
+    "drafting": "草稿中",
+    "publisheding": "已发布中",
+    "deleteding": "已删除中",
+    "drafts": "草稿",
+    "name": "名称",
+    "username": "用户名",
+    "password": "密码",
+    "role": "角色",
+    "roles": "角色",
+    "email": "邮箱",
+    "avatar": "头像",
+    "usernameOrEmail": "用户名或邮箱",
+    "description": "描述",
+    "keywords": "关键字",
+    "keywordsPlaceholder": "多个关键字用英文逗号隔开",
+    "summary": "摘要",
+    "summaryPlaceholder": "请输入摘要",
+    "addTime": "添加时间"
+  },
+  "operation": {
+    "edit": "编辑",
+    "delete": "删除",
+    "batchDelete": "批量删除",
+    "detil": "详情",
+    "save": "保存",
+    "create": "创建",
+    "cancel": "取消",
+    "confirm": "确认",
+    "search": "搜索",
+    "searchPlaceholder": "请输入关键字",
+    "refresh": "刷新",
+    "export": "导出",
+    "import": "导入",
+    "download": "下载",
+    "upload": "上传",
+    "downloadTemplate": "下载模板"
+  },
+  "sider": {
+    "home": "主页",
+    "setting": "设置",
+    "codeGen": "代码生成",
+    "charts": "图表",
+    "charts-line": "折线图",
+    "charts-line-3n+1": "3N+1",
+    "charts-line-function": "函数图",
+    "charts-line-simpleLine": "简单折线图",
+    "charts-pie": "饼图",
+    "charts-bar": "柱状图",
+    "charts-polar": "极坐标图",
+    "charts-radar": "雷达图",
+    "charts-gauge": "仪表盘",
+    "charts-funnel": "漏斗图",
+    "charts-gauge2": "仪表盘2",
+    "game": "游戏",
+    "game-2048": "2048",
+    "game-minesweeper": "扫雷",
+    "game-minesweeper-normal": "普通",
+    "game-minesweeper-advanced": "高级",
+    "game-minesweeper-hell": "地狱",
+    "tools": "工具",
+    "tools-image": "图片处理",
+    "tools-image-grayscaleImage": "灰度图",
+    "GIS": "GIS",
+    "cesium": "Cesium",
+    "openlayer": "OpenLayer"
+  }
+}
