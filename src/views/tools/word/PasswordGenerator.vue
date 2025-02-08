@@ -19,71 +19,71 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive, watch } from 'vue'
-import { ElMessage } from 'element-plus'
-import { useI18n } from 'vue-i18n'
-const { t } = useI18n<{ message: MessageSchema }>()
+import { reactive, watch } from 'vue';
+import { ElMessage } from 'element-plus';
+import { useI18n } from 'vue-i18n';
+const { t } = useI18n<{ message: MessageSchema }>();
 const wordTypes: {
-  name: string
-  use: boolean
-  str: string
+  name: string;
+  use: boolean;
+  str: string;
 }[] = [
   {
     name: 'uppercase',
     use: true,
-    str: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+    str: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
   },
   {
     name: 'lowercase',
     use: true,
-    str: 'abcdefghijklmnopqrstuvwxyz',
+    str: 'abcdefghijklmnopqrstuvwxyz'
   },
   {
     name: 'number',
     use: true,
-    str: '0123456789',
+    str: '0123456789'
   },
   {
     name: 'special',
     use: true,
-    str: "!@#$%^&*()_+-=[]{}|;':,./<>?",
-  },
-]
+    str: "!@#$%^&*()_+-=[]{}|;':,./<>?"
+  }
+];
 const state = reactive({
   candidate: '', //候选字符串
   password: '', //生成的密码
   len: 15, //密码长度
   types: wordTypes, //密码类型
-  checkedType: wordTypes.map((item) => item.str), //选中的密码类型
-})
+  checkedType: wordTypes.map((item) => item.str) //选中的密码类型
+});
 watch([() => state.candidate, () => state.len, () => state.checkedType], () => {
-  create()
-})
+  create();
+});
 watch(
   () => state.checkedType,
   () => {
-    updateCandidate()
-  },
-)
+    updateCandidate();
+  }
+);
 function copy() {
-  navigator.clipboard.writeText(state.password)
-  ElMessage.success('复制成功')
+  navigator.clipboard.writeText(state.password);
+  ElMessage.success('复制成功');
 }
 function create() {
-  let password = ''
+  let password = '';
   for (let i = 0; i < state.len; i++) {
-    password += state.candidate[Math.floor(Math.random() * state.candidate.length)]
+    password += state.candidate[Math.floor(Math.random() * state.candidate.length)];
   }
-  state.password = password
+  state.password = password;
 }
 function updateCandidate() {
-  let candidate = ''
+  let candidate = '';
   for (let i = 0; i < state.checkedType.length; i++) {
-    candidate += state.checkedType[i]
+    candidate += state.checkedType[i];
   }
-  state.candidate = candidate
+  state.candidate = candidate;
 }
-updateCandidate()
+updateCandidate();
 </script>
 
 <style lang="scss" scoped>

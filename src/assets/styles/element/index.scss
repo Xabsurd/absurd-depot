@@ -1,10 +1,22 @@
+$custonFontSzie: 16px;
 /* 只需要重写你需要的即可 */
 @forward 'element-plus/theme-chalk/src/common/var.scss' with (
   $colors: (
     'primary': (
       // 主色
-      'base': #ff6000
+      'base': #129cec
     )
+  ),
+  $font-size: (
+    'base': $custonFontSzie
+  ),
+  $checkbox: (
+    'font-size': $custonFontSzie,
+    'input-height': $custonFontSzie,
+    'input-width': $custonFontSzie
+  ),
+  $input-font-size: (
+    'large': $custonFontSzie
   )
 );
 @use './dark.scss';

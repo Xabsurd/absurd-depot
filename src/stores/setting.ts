@@ -3,6 +3,11 @@ import { getItem, setItem } from '../utils/localStorage';
 import { setupI18n, setI18nLanguage, loadLocaleMessages } from '@/locales/i18n';
 import { getSystemLanguage, getSystemTheme } from '@/utils/system';
 import { SUPPORT_LOCALES, SUPPORT_THEMES } from '../utils/config';
+import { useDark, useToggle } from '@vueuse/core';
+
+export const isDark = useDark();
+export const toggleDark = useToggle(isDark);
+
 let setting = getItem('setting');
 if (!setting) {
   setting = { language: 'systemSetting', theme: 'systemSetting' };
@@ -50,6 +55,7 @@ export const useSettingStore = defineStore('SettingStore', {
       }
     },
     changeTheme(theme: string) {
+      // toggleDark();
       this.theme = theme;
       setting.theme = theme;
       if (theme === 'systemSetting') {

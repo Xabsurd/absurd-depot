@@ -13,14 +13,11 @@ settingStore.changeTheme(settingStore.theme);
 setTimeout(() => {
   mainStore.pageLoading = false;
 }, 3000);
-const size = ref<
-  EpPropMergeType<StringConstructor, '' | 'default' | 'large' | 'small', never> | undefined
->('large');
 const zIndex = ref(3000);
 </script>
 
 <template>
-  <el-config-provider :size="size" :z-index="zIndex">
+  <el-config-provider :size="'large'" :z-index="zIndex">
     <RouterView />
     <div class="app-loading" v-show="mainStore.pageLoading">
       <Loading />
