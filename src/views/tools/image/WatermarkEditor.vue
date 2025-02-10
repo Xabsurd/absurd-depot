@@ -17,7 +17,7 @@
       :showPlaceholder="state.image === ''"
       class="h-4xl flex-shrink-0 md:flex-1 md:h-auto"
     >
-      <canvas ref="_canvas"></canvas>
+      <canvas ref="_canvas" class="w-full h-full object-contain object-center"></canvas>
     </UploadFile>
     <el-form class="w-full h-auto flex-shrink-0 max-h-sm overflow-auto md:w-sm md:max-h-full">
       <el-form-item label="1233213">
@@ -44,12 +44,17 @@ function uploadFiles(files: File[] | null) {
     const img = new Image();
     img.src = state.image;
     img.onload = () => {
-      ctx.drawImage(img, 0, 0);
+      if (_canvas.value) {
+        _canvas.value.width = img.width;
+        _canvas.value.height = img.height;
+        ctx.drawImage(img, 0, 0);
+      }
     };
   }
 }
 </script>
 <style lang="scss" scoped>
 .WatermarkEditor {
+  object-fit: contain;
 }
 </style>
