@@ -1,11 +1,10 @@
-import { nextTick } from 'vue';
 import { useSettingStore } from '@/stores/setting';
 //全局状态
 const settingStore = useSettingStore();
 
 //参数
-const notModeType: any = { slide: true };
-//函数|逻辑代码
+const notModeType: { [key: string]: boolean } = { slide: true };
+//如果参数中有这个type那么就返回default
 export function getTransitionType(type: string) {
   if (type) {
     if (notModeType[type]) {
@@ -21,13 +20,15 @@ export function hideMenu() {
   settingStore.menuCollapse = true;
 }
 export function windowResize() {
-  if (window.innerWidth <= 992) {
-    if (!settingStore.menuCollapse) {
-      settingStore.menuCollapse = true;
-    }
-  } else {
-    if (settingStore.menuCollapse) {
-      settingStore.menuCollapse = false;
+  if (settingStore.fullScreen === 0) {
+    if (window.innerWidth <= 992) {
+      if (!settingStore.menuCollapse) {
+        settingStore.menuCollapse = true;
+      }
+    } else {
+      if (settingStore.menuCollapse) {
+        settingStore.menuCollapse = false;
+      }
     }
   }
   if (

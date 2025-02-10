@@ -46,6 +46,7 @@ const wordTypes: {
   {
     name: 'special',
     use: true,
+    // eslint-disable-next-line quotes
     str: "!@#$%^&*()_+-=[]{}|;':,./<>?"
   }
 ];
@@ -67,7 +68,10 @@ watch(
 );
 function copy() {
   navigator.clipboard.writeText(state.password);
-  ElMessage.success('复制成功');
+  ElMessage({
+    message: t('message.copySuccess'),
+    type: 'success'
+  });
 }
 function create() {
   let password = '';

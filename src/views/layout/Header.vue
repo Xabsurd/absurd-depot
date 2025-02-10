@@ -28,10 +28,8 @@
   </header>
 </template>
 <script setup lang="ts">
-import { ElMessage } from 'element-plus';
-// import { getCurrentInstance } from 'vue';
+// import { ElMessage } from 'element-plus';
 import { useSettingStore } from '@/stores/setting';
-// const test = getCurrentInstance();
 const settingStore = useSettingStore();
 function changeMenuCollapse() {
   settingStore.menuCollapse = !settingStore.menuCollapse;
@@ -47,7 +45,10 @@ function bodyFull() {
   if (settingStore.fullScreen === 1) {
     settingStore.fullScreen = 0;
   } else {
-    ElMessage.info('按Esc键退出');
+    ElMessage({
+      message: '按Esc键退出',
+      type: 'warning'
+    });
     settingStore.fullScreen = 1;
   }
 }

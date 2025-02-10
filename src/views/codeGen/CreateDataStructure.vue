@@ -56,10 +56,16 @@ function submitList() {
       state.formVisible = true;
       break;
     case UniqueValidateResult.Null:
-      ElMessage.error(t('component.codeGen.createDataStructure.error1'));
+      ElMessage({
+        message: t('component.codeGen.createDataStructure.error1'),
+        type: 'error'
+      });
       break;
     case UniqueValidateResult.Duplicate:
-      ElMessage.error(t('component.codeGen.createDataStructure.error2'));
+      ElMessage({
+        message: t('component.codeGen.createDataStructure.error2'),
+        type: 'error'
+      });
   }
 }
 function submitForm() {

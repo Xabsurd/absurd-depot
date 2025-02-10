@@ -165,6 +165,7 @@
     "tools": "工具",
     "tools-image": "图片处理",
     "tools-image-grayscaleImage": "灰度图",
+    "tools-image-watermarkEditor": "水印编辑器",
     "GIS": "GIS",
     "cesium": "Cesium",
     "openlayer": "OpenLayer"

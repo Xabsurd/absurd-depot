@@ -100,9 +100,14 @@ const menuMap: MenuMap[] = [
         name: 'tools-image',
         children: [
           {
-            path: 'compress',
+            path: 'grayscaleImage',
             name: 'tools-image-grayscaleImage',
             component: () => import('../views/tools/image/GrayscaleImage.vue')
+          },
+          {
+            path: 'watermarkEditor',
+            name: 'tools-image-watermarkEditor',
+            component: () => import('../views/tools/image/WatermarkEditor.vue')
           }
         ]
       },
@@ -118,8 +123,8 @@ const menuMap: MenuMap[] = [
         ]
       },
       {
-        path:'word',
-        name:'tools-word',
+        path: 'word',
+        name: 'tools-word',
         children: [
           {
             path: 'passwordGenerator',

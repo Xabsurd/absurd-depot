@@ -32,7 +32,11 @@ async function handleCreateSubmit(row: DataStructureType, type: OperationType) {
   switch (type) {
     case 'create':
       if (await apiEngine.codeGen.dataStructure.haveName(row.id ? row.id : -1, row.name)) {
-        ElMessage.error('Data Structure Name Already Exists!');
+        ElMessage({
+          message: 'Data Structure Name Already Exists!',
+          type: 'error'
+        });
+
         return;
       }
       apiEngine.codeGen.dataStructure.add(toRaw(row)).then((res) => {});
@@ -40,7 +44,10 @@ async function handleCreateSubmit(row: DataStructureType, type: OperationType) {
       break;
     case 'edit':
       if (await apiEngine.codeGen.dataStructure.haveName(row.id ? row.id : -1, row.name)) {
-        ElMessage.error('Data Structure Name Already Exists!');
+        ElMessage({
+          message: 'Data Structure Name Already Exists!',
+          type: 'error'
+        });
         return;
       }
       apiEngine.codeGen.dataStructure.update(toRaw(row)).then((res) => {});

@@ -4,7 +4,7 @@
     <Sider></Sider>
     <div id="Content">
       <Header v-show="state.headerShow" ref="header"></Header>
-      <div id="ContentView" ref="ContentView">
+      <div id="ContentView" ref="ContentView" class="m-2 lg:m-4">
         <AnimationRouter></AnimationRouter>
         <div class="router-loading" v-if="mainStore.routerLoading">
           <Loading />
@@ -38,7 +38,7 @@ const state = reactive({ headerShow: true });
 //数据监听
 watch(
   () => settingStore.fullScreen,
-  (data, prev) => {
+  (data) => {
     switch (data) {
       case 1:
         settingStore.menuCollapse = true;
@@ -97,7 +97,6 @@ defineExpose({
       flex: 1;
       overflow: hidden;
       position: relative;
-      margin: var(--content-margin);
       color: var(--content-text-color);
 
       // > div {
@@ -120,7 +119,7 @@ defineExpose({
   }
 }
 
-@media screen and (max-width: 992px) {
+@screen lt-lg {
   #Layout {
     #Content {
       min-width: 100%;

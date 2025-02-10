@@ -4,34 +4,33 @@
       <template #title>
         <i v-if="item.icon" class="iconfont" :class="item.icon"></i>
         <span>
-          {{ t('sider.' + item.name) }}
-          <!-- {{ uiText[item.path.replace(/\//g, '')]?.text || item.path.replace(/\//g, '') }} -->
+          {{ t('sider.' + item.name?.toString()) }}
         </span>
       </template>
       <CreateMenu
         v-bind:menuMap="item.children"
         v-bind:cusKey="cusKey + '-' + index"
         @itemClick="itemClick"
-        :parent="parent + item.path + '/'"
+        :parent="props.parent + item.path + '/'"
       ></CreateMenu>
     </el-sub-menu>
-    <el-menu-item v-else :index="parent + item.path" @click="itemClick">
+    <el-menu-item v-else :index="props.parent + item.path" @click="itemClick">
       <template #title>
-        <router-link :to="parent + item.path">
+        <router-link :to="props.parent + item.path">
           <i v-if="item.icon" class="iconfont" :class="item.icon"></i>
-          {{ t('sider.' + item.name) }}
-          <!-- {{ t(item.name) }} -->
+          {{ t('sider.' + item.name?.toString()) }}
         </router-link>
       </template>
     </el-menu-item>
   </template>
 </template>
 <script lang="ts" setup>
+import type { MenuMap } from '@/router/menuMap';
 import type { MessageSchema } from '@/types/schema';
 import { useI18n } from 'vue-i18n';
 const { t } = useI18n<{ mesasge: MessageSchema }>();
 const props = withDefaults(
-  defineProps<{ parent?: string; menuMap: Array<any>; cusKey: string }>(),
+  defineProps<{ parent?: string; menuMap: Array<MenuMap>; cusKey?: string }>(),
   {
     parent: '',
     cusKey: '',
