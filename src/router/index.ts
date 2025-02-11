@@ -1,20 +1,21 @@
-import {
-  createRouter,
-  createWebHashHistory,
-  createWebHistory,
-  type RouteRecordRaw
-} from 'vue-router';
-import menuMap, { type MenuMap } from './menuMap';
+import { createRouter, createWebHashHistory, type RouteRecordRaw } from 'vue-router';
 import { getUserMenuMap } from '@/api/user';
 import { getItem, setItem } from '@/utils/localStorage';
-
+export type MenuMap = {
+  icon?: string;
+} & RouteRecordRaw;
+const AllRouter = import.meta.glob([
+  '@/views/**/*.vue',
+  '!**/layout/**/*.vue',
+  '!**/components/**/*.vue'
+]);
 function setRouter(data: Array<MenuMap>): RouteRecordRaw[] {
   const arr: RouteRecordRaw[] = [];
   for (let i = 0; i < data.length; i++) {
     const element = data[i];
-    // if (element.icon) {
-    //   delete element.icon;
-    // }
+    if (element.component) {
+      element.component = AllRouter[`${element.component}`];
+    }
     arr.push(element);
     if (element.children) {
       arr[arr.length - 1].children = setRouter(element.children);
@@ -43,6 +44,7 @@ const router = createRouter({
   routes
 });
 router.beforeEach((to, from, next) => {
+  console.log('开始加载');
   if (to.path === '/') {
     next({ path: '/home' });
   } else {
@@ -50,7 +52,9 @@ router.beforeEach((to, from, next) => {
     setItem({ name: 'urlRecord', value: to.path });
   }
 });
-// router.addRoute('base');
+router.afterEach((to, from) => {
+  console.log('加载完成');
+});
 getUserMenuMap().then((res) => {
   const userMenu = setRouter(res);
   for (let i = 0; i < userMenu.length; i++) {

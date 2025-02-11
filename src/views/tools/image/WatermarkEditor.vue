@@ -20,16 +20,29 @@
       <canvas ref="_canvas" class="w-full h-full object-contain object-center"></canvas>
     </UploadFile>
     <el-form class="w-full h-auto flex-shrink-0 max-h-sm overflow-auto md:w-sm md:max-h-full">
-      <el-form-item label="1233213">
-        <el-input></el-input>
+      <el-form-item v-for="(item, index) in state.watermarks" :key="index">
+        <el-input v-model="item.text">
+          <template #prepend>
+            <el-button :type="'primary'">
+              <dynamic-icon :icon="'mingcute:text-2-fill'" class="icon"></dynamic-icon>
+            </el-button>
+          </template>
+        </el-input>
       </el-form-item>
     </el-form>
+    <IconSelector></IconSelector>
   </div>
 </template>
 <script setup lang="ts">
 import { reactive } from 'vue';
 const state = reactive({
-  image: ''
+  image: '',
+  watermarks: [
+    {
+      icon: '',
+      text: ''
+    }
+  ]
 });
 const _canvas = ref<HTMLCanvasElement>();
 let ctx: CanvasRenderingContext2D;

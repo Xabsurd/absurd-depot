@@ -1,0 +1,163 @@
+[
+  {
+    "path": "/home",
+    "name": "home",
+    "icon": "icon-home",
+    "component": "/src/views/home/Home.vue"
+  },
+  {
+    "path": "/setting",
+    "name": "setting",
+    "icon": "icon-setting",
+    "component": "/src/views/setting/Setting.vue"
+  },
+  {
+    "path": "/codeGen",
+    "name": "codeGen",
+    "icon": "icon-setting",
+    "component": "/src/views/codeGen/CodeGen.vue"
+  },
+  {
+    "path": "/testCode",
+    "name": "testCode",
+    "icon": "icon-setting",
+    "component": "/src/views/codeGen/TestCode.vue"
+  },
+  {
+    "path": "/charts",
+    "icon": "icon-barchart",
+    "name": "charts",
+    "children": [
+      {
+        "path": "line",
+        "name": "charts-line",
+        "children": [
+          {
+            "path": "simpleLine",
+            "name": "charts-line-simpleLine",
+            "component": "/src/views/charts/lines/SimpleLine.vue"
+          },
+          {
+            "path": "function",
+            "name": "charts-line-function",
+            "component": "/src/views/charts/lines/FunctionLine.vue"
+          },
+          {
+            "path": "3n+1",
+            "name": "charts-line-3n+1",
+            "component": "/src/views/charts/lines/3N+1.vue"
+          }
+        ]
+      },
+      {
+        "path": "tools",
+        "name": "charts-tools",
+        "children": [
+          {
+            "path": "fund",
+            "name": "charts-tools-fund",
+            "component": "/src/views/charts/tools/Fund.vue"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "path": "/game",
+    "name": "game",
+    "icon": "icon-game",
+    "children": [
+      {
+        "path": "minesweeper",
+        "name": "game-minesweeper",
+        "children": [
+          {
+            "path": "normal",
+            "name": "game-minesweeper-normal",
+            "component": "/src/views/game/minesweeper/Normal.vue"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "path": "/tools",
+    "name": "tools",
+    "icon": "icon-tools",
+    "children": [
+      {
+        "path": "image",
+        "name": "tools-image",
+        "children": [
+          {
+            "path": "grayscaleImage",
+            "name": "tools-image-grayscaleImage",
+            "component": "/src/views/tools/image/GrayscaleImage.vue"
+          },
+          {
+            "path": "watermarkEditor",
+            "name": "tools-image-watermarkEditor",
+            "component": "/src/views/tools/image/WatermarkEditor.vue"
+          }
+        ]
+      },
+      {
+        "path": "draw",
+        "name": "tools-draw",
+        "children": [
+          {
+            "path": "overPointCurve",
+            "name": "tools-draw-overPointCurve",
+            "component": "/src/views/tools/draw/OverPointCurve.vue"
+          }
+        ]
+      },
+      {
+        "path": "word",
+        "name": "tools-word",
+        "children": [
+          {
+            "path": "passwordGenerator",
+            "name": "tools-word-passwordGenerator",
+            "component": "/src/views/tools/word/PasswordGenerator.vue"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "path": "/GIS",
+    "name": "GIS",
+    "icon": "icon-gis",
+    "children": [
+      {
+        "path": "cesium",
+        "name": "cesium",
+        "component": "/src/views/GIS/cesium/Cesium.vue",
+        "meta": {
+          "animation": false
+        },
+        "children": [
+          {
+            "path": "start",
+            "name": "cesium-start",
+            "component": "/src/views/GIS/cesium/start/Start.vue"
+          },
+          {
+            "path": "measurement",
+            "name": "cesium-measurement",
+            "component": "/src/views/GIS/cesium/measurement/Measurement.vue"
+          }
+        ]
+      },
+      {
+        "path": "openlayer",
+        "name": "openlayer",
+        "component": "/src/views/GIS/openlayer/Start.vue",
+        "meta": {
+          "animation": false
+        }
+      }
+    ]
+  }
+]

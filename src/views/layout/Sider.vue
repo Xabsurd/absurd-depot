@@ -6,11 +6,18 @@
 
 <script lang="ts" setup>
 import CreateMenu from './components/CreateMenu.vue';
-import menuMap from '../../router/menuMap';
+// import menuMap from '../../router/menuMap';
+import type { MenuMap } from '@/router';
 import { useSettingStore } from '@/stores/setting';
 import { computed } from 'vue';
+import { getUserMenuMap } from '@/api/user';
+
 const settingStore = useSettingStore();
 const menuCollapse = computed(() => settingStore.menuCollapse);
+const menuMap = ref<MenuMap[]>([]);
+getUserMenuMap().then((res) => {
+  menuMap.value = res;
+});
 </script>
 
 <style lang="scss" scoped>

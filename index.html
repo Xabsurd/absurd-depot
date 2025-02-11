@@ -8,6 +8,48 @@
   </head>
   <body>
     <div id="app"></div>
+    <div class="page-loading">
+      <div class="spinner"></div>
+      <p>页面加载中…………</p>
+    </div>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
+<style>
+  html,
+  body {
+    margin: 0;
+  }
+  .page-loading {
+    --size: 50px;
+    --header-bg-color: rgb(50, 50, 51);
+    --header-text-color: rgba(204, 204, 204);
+    --content-bg-color: rgb(30, 30, 30);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: var(--content-bg-color);
+  }
+
+  .page-loading .spinner {
+    width: var(--size);
+    height: var(--size);
+    border: 7px solid var(--header-bg-color);
+    border-top-color: var(--header-text-color);
+    color: var(--header-text-color);
+    border-radius: 50%;
+    animation: spin 1s infinite linear;
+    margin-bottom: 15px;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+</style>

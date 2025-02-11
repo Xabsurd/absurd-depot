@@ -1,9 +1,7 @@
 <script setup lang="ts">
-import { reactive, ref } from 'vue';
-const state = reactive({});
 const props = withDefaults(
   defineProps<{
-    type: 'content' | 'form';
+    type?: 'content' | 'form';
   }>(),
   {
     type: 'content'
