@@ -1,6 +1,7 @@
 import { createRouter, createWebHashHistory, type RouteRecordRaw } from 'vue-router';
 import { getUserMenuMap } from '@/api/user';
 import { getItem, setItem } from '@/utils/localStorage';
+import { useMainStore } from '@/stores';
 export type MenuMap = {
   icon?: string;
 } & RouteRecordRaw;
@@ -9,6 +10,7 @@ const AllRouter = import.meta.glob([
   '!**/layout/**/*.vue',
   '!**/components/**/*.vue'
 ]);
+let menuMapLoaded = false;
 function setRouter(data: Array<MenuMap>): RouteRecordRaw[] {
   const arr: RouteRecordRaw[] = [];
   for (let i = 0; i < data.length; i++) {
@@ -43,8 +45,9 @@ const router = createRouter({
   history: createWebHashHistory(),
   routes
 });
-router.beforeEach((to, from, next) => {
-  console.log('开始加载');
+router.beforeEach((to, _from, next) => {
+  const mainState = useMainStore();
+  mainState.routerLoading = true;
   if (to.path === '/') {
     next({ path: '/home' });
   } else {
@@ -52,8 +55,13 @@ router.beforeEach((to, from, next) => {
     setItem({ name: 'urlRecord', value: to.path });
   }
 });
-router.afterEach((to, from) => {
-  console.log('加载完成');
+router.afterEach(() => {
+  const mainState = useMainStore();
+  // console.log('加载完成');
+  mainState.routerLoading = false;
+  if (menuMapLoaded) {
+    mainState.setPageLoading(false);
+  }
 });
 getUserMenuMap().then((res) => {
   const userMenu = setRouter(res);
@@ -67,6 +75,7 @@ getUserMenuMap().then((res) => {
   } else {
     router.push('/home');
   }
+  menuMapLoaded = true;
 });
 
 export default router;

@@ -1,3 +1,4 @@
+// import { set } from 'ol/transform';
 import { defineStore } from 'pinia';
 export const useMainStore = defineStore('MainStore', {
   state() {
@@ -7,6 +8,11 @@ export const useMainStore = defineStore('MainStore', {
     };
   },
   getters: {},
-  actions: {}
+  actions: {
+    setPageLoading(pageLoading: boolean) {
+      this.pageLoading = pageLoading;
+      document.getElementById('pageLoading')!.style.display = pageLoading ? 'flex' : 'none';
+    }
+  }
 });
 // const mainState = MainStore();

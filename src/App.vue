@@ -1,28 +1,30 @@
 <script setup lang="ts">
-import Loading from '@/components/status/Loading.vue';
-import SkeletonLoading from '@/components/status/SkeletonLoading.vue';
-import { useMainStore } from './stores';
+// import Loading from '@/components/status/Loading.vue';
+// import SkeletonLoading from '@/components/status/SkeletonLoading.vue';
+// import { useMainStore } from './stores';
 import { ElConfigProvider } from 'element-plus';
 import { ref } from 'vue';
-import type { EpPropMergeType } from 'element-plus/lib/utils/index.js';
+// import type { EpPropMergeType } from 'element-plus/lib/utils/index.js';
 import { useSettingStore } from './stores/setting';
-const mainStore = useMainStore();
+// const mainStore = useMainStore();
 const settingStore = useSettingStore();
 settingStore.changeTheme(settingStore.theme);
 //5秒后关闭loading
-setTimeout(() => {
-  mainStore.pageLoading = false;
-}, 3000);
+// nextTick(() => {
+//   setTimeout(() => {
+//     mainStore.setPageLoading(false);
+//   }, 1);
+// });
 const zIndex = ref(3000);
 </script>
 
 <template>
   <el-config-provider :size="'large'" :z-index="zIndex">
     <RouterView />
-    <div class="app-loading" v-show="mainStore.pageLoading">
+    <!-- <div class="app-loading" v-show="mainStore.pageLoading">
       <Loading />
-      <!-- <SkeletonLoading></SkeletonLoading> -->
-    </div>
+      <SkeletonLoading></SkeletonLoading>
+    </div> -->
   </el-config-provider>
 </template>
 
