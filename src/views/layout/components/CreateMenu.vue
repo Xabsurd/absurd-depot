@@ -25,7 +25,7 @@
   </template>
 </template>
 <script lang="ts" setup>
-import type { MenuMap } from '@/router/menuMap';
+import type { MenuMap } from '@/router';
 import type { MessageSchema } from '@/types/schema';
 import { useI18n } from 'vue-i18n';
 const { t } = useI18n<{ mesasge: MessageSchema }>();

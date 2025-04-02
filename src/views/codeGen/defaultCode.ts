@@ -61,7 +61,7 @@ export const importMap = `
   }
   `;
 export const headerCode = {
-  tinymce: '<script src="./libs/tinymce/tinymce.min.js"></script>'
+  tinymce: '<script src="/node_modules/tinymce/tinymce.min.js"></script>'
 };
 export const ComponentCode = {
   editor: `
@@ -110,7 +110,7 @@ onMounted(() => {
   if (!tinymce_script) {
     const dom = document.createElement('script');
     dom.setAttribute('id', 'tinymce-script');
-    dom.setAttribute('src', './libs/tinymce/tinymce.min.js');
+    dom.setAttribute('src', '/node_modules/tinymce/tinymce.min.js');
     document.body.appendChild(dom);
     console.log(tinymceContainerRef.value);
     dom.onload = async () => {
@@ -149,6 +149,6 @@ defineExpose({ setContent });
   display: none;
 }
 </style>
-  
+
 `
 };

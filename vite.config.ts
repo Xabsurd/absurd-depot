@@ -8,7 +8,7 @@ import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 import UnoCSS from 'unocss/vite';
-
+import copyPlugin from 'rollup-plugin-copy';
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
@@ -27,6 +27,25 @@ export default defineConfig({
         })
       ],
       dirs: ['./src/components']
+    }),
+    copyPlugin({
+      verbose: true,
+      hook: 'closeBundle',
+      copyOnce: true,
+      targets: [
+        {
+          src: 'node_modules/cesium/Build/Cesium/*',
+          dest: 'dist/node_modules/cesium/Build/Cesium'
+        },
+        {
+          src: 'node_modules/@iconify-icons/*',
+          dest: 'dist/node_modules/@iconify-icons'
+        },
+        {
+          src: 'node_modules/tinymce/*',
+          dest: 'dist/node_modules/tinymce'
+        }
+      ]
     })
   ],
   resolve: {

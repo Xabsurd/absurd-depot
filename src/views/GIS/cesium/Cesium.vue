@@ -12,7 +12,7 @@ import {
 import 'cesium/Build/Cesium/Widgets/widgets.css';
 // import cesium from 'https://cdn.jsdelivr.net/npm/cesium@1.117.0/+esm';
 import { cesium_token } from '@/utils/config';
-window.CESIUM_BASE_URL = './libs/Cesium';
+window.CESIUM_BASE_URL = import.meta.env.VITE_APP_PACKAGE_PATH + '/cesium/Build/Cesium';
 const cesiumContainer = ref<HTMLElement>();
 const state = reactive({
   loaded: false
@@ -21,27 +21,27 @@ const state = reactive({
 // Your access token can be found at: https://ion.cesium.com/tokens.
 // Replace `your_access_token` with your Cesium ion access token.
 Ion.defaultAccessToken = cesium_token;
-let viewer = reactive<Viewer>({} as any);
+const viewer = ref<Viewer>();
 onMounted(async () => {
   if (!cesiumContainer.value) {
     return;
   }
   // Initialize the Cesium Viewer in the HTML element with the "cesiumContainer" ID.
-  viewer = new Viewer(cesiumContainer.value, {
+  viewer.value = new Viewer(cesiumContainer.value, {
     terrainProvider: await createWorldTerrainAsync(),
     selectionIndicator: false,
     timeline: false,
     animation: false,
     infoBox: false
   });
-  viewer.scene.globe.depthTestAgainstTerrain = true;
-  viewer.cesiumWidget.screenSpaceEventHandler.removeInputAction(
+  viewer.value.scene.globe.depthTestAgainstTerrain = true;
+  viewer.value.cesiumWidget.screenSpaceEventHandler.removeInputAction(
     ScreenSpaceEventType.LEFT_DOUBLE_CLICK
   );
   // Add Cesium OSM Buildings, a global 3D buildings layer.
   // const buildingTileset = viewer.scene.primitives.add(Cesium.createOsmBuildings());
   // Fly the camera to San Francisco at the given longitude, latitude, and height.
-  viewer.camera.flyTo({
+  viewer.value.camera.flyTo({
     destination: Cartesian3.fromDegrees(-122.4175, 37.655, 400),
     orientation: {
       heading: CMath.toRadians(0.0),

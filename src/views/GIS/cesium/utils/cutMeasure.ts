@@ -1,5 +1,18 @@
-import type { Viewer, Entity } from 'cesium';
-import { Cartographic, CustomDataSource, ScreenSpaceEventHandler, Cartesian3, PolygonGeometry, PerInstanceColorAppearance, Color, ScreenSpaceEventType, defined, CallbackProperty, PolygonHierarchy, ColorMaterialProperty } from 'cesium';
+import type { Viewer, Entity, PositionProperty } from 'cesium';
+import {
+  Cartographic,
+  CustomDataSource,
+  ScreenSpaceEventHandler,
+  Cartesian3,
+  PolygonGeometry,
+  PerInstanceColorAppearance,
+  Color,
+  ScreenSpaceEventType,
+  defined,
+  CallbackProperty,
+  PolygonHierarchy,
+  ColorMaterialProperty
+} from 'cesium';
 
 export class cutMeasure {
   //私有变量
@@ -29,7 +42,7 @@ export class cutMeasure {
   createCutVolumeAnalysis(cutHeight: number) {
     this.#viewer.scene.globe.depthTestAgainstTerrain = true;
     this.#handle = new ScreenSpaceEventHandler(this.#viewer.scene.canvas);
-    return new Promise((reslove, reject) => {
+    return new Promise((reslove) => {
       this.#Draw(cutHeight).then((points) => {
         this.#CutVolumeAnalysis(points as Array<Cartesian3>, cutHeight).then((data) => {
           reslove(data);
@@ -140,7 +153,7 @@ export class cutMeasure {
    * @returns Promise->reslove(data)
    */
   #computeCutVolume(positions: Cartesian3[], cutHeight: number) {
-    return new Promise((reslove, reject) => {
+    return new Promise((reslove) => {
       let waCutVolume = 0,
         tianCutVolume = 0;
       if (!this.#viewer.terrainProvider.availability) {
@@ -170,7 +183,7 @@ export class cutMeasure {
       let cartographic: Cartographic;
       let bottomArea;
       //源数据
-      const subTrianglePositions = geom?.attributes.position.values;
+      const subTrianglePositions = geom?.attributes.position?.values;
       let allArea = 0;
       if (!geom?.indices || !subTrianglePositions) {
         return;
@@ -252,7 +265,7 @@ export class cutMeasure {
             // closeBottom: true,
             outlineColor: Color.WHITE
           }
-        } as any;
+        } as unknown as Entity;
 
         this.#drawLayer.entities.add(drawingPolygon);
       }
@@ -312,7 +325,7 @@ export class cutMeasure {
    * @returns  Promise->reslove(几何的点)
    */
   #Draw(cutHeight: number) {
-    return new Promise((reslove, reject) => {
+    return new Promise((reslove) => {
       let activeShapePoints: Array<Cartesian3> = [];
       let activeShape: Entity | null;
       let floatingPoint: Entity | null;
@@ -350,7 +363,7 @@ export class cutMeasure {
           const newPosition = this.#viewer.scene.pickPosition(event.endPosition);
           if (defined(newPosition)) {
             if (floatingPoint?.position) {
-              floatingPoint.position = newPosition as any;
+              floatingPoint.position = newPosition as unknown as PositionProperty;
             }
             // floatingPoint?.position.setValue(newPosition);
             // activeShapePoints.pop();
@@ -360,14 +373,14 @@ export class cutMeasure {
         }
       }, ScreenSpaceEventType.MOUSE_MOVE);
 
-      this.#handle?.setInputAction((event: ScreenSpaceEventHandler.MotionEvent) => {
+      this.#handle?.setInputAction(() => {
         activeShapePoints.pop(); //去除最后一个动态点
         activeShapePoints.pop();
         terminateShape();
         this.#viewer.trackedEntity = undefined;
         return false;
       }, ScreenSpaceEventType.LEFT_DOUBLE_CLICK);
-      this.#handle?.setInputAction((event: ScreenSpaceEventHandler.MotionEvent) => {
+      this.#handle?.setInputAction(() => {
         terminateShape();
         this.#viewer.trackedEntity = undefined;
         return false;
@@ -376,7 +389,7 @@ export class cutMeasure {
       const terminateShape = () => {
         this.#drawLayer.entities.add({
           polygon: {
-            hierarchy: activeShapePoints as any, //getAllHeight(activeShapePoints),
+            hierarchy: activeShapePoints, //getAllHeight(activeShapePoints),
             extrudedHeight: cutHeight,
             perPositionHeight: true,
             material: Color.CYAN.withAlpha(0.5),
@@ -397,20 +410,20 @@ export class cutMeasure {
         activeShapePoints = [];
       };
       //获取所有点的经纬度和实际高度并转换成笛卡尔坐标
-      const getAllHeight = (points: Array<Cartesian3>) => {
-        const hp = [];
-        for (let i = 0; i < points.length; i++) {
-          const cartographic = Cartographic.fromCartesian(points[i]);
-          hp.push(
-            Cartesian3.fromRadians(
-              cartographic.longitude,
-              cartographic.latitude,
-              this.#viewer.scene.globe.getHeight(cartographic)
-            )
-          );
-        }
-        return hp;
-      };
+      // const getAllHeight = (points: Array<Cartesian3>) => {
+      //   const hp = [];
+      //   for (let i = 0; i < points.length; i++) {
+      //     const cartographic = Cartographic.fromCartesian(points[i]);
+      //     hp.push(
+      //       Cartesian3.fromRadians(
+      //         cartographic.longitude,
+      //         cartographic.latitude,
+      //         this.#viewer.scene.globe.getHeight(cartographic)
+      //       )
+      //     );
+      //   }
+      //   return hp;
+      // };
     });
   }
 }

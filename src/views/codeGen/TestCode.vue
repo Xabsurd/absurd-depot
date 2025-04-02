@@ -44,7 +44,7 @@ onMounted(() => {
   if (!tinymce_script) {
     const dom = document.createElement('script');
     dom.setAttribute('id', 'tinymce-script');
-    dom.setAttribute('src', './libs/tinymce/tinymce.min.js');
+    dom.setAttribute('src', '/node_modules/tinymce/tinymce.min.js');
     document.body.appendChild(dom);
     console.log(tinymceContainerRef.value);
     dom.onload = async () => {
@@ -57,7 +57,7 @@ onMounted(() => {
 async function initEditor() {
   console.log(options);
   options.target = tinymceContainerRef.value;
-    // return;
+  // return;
   setTimeout(async () => {
     tinymce = await window.tinymce.init(options);
     tinymce[0]

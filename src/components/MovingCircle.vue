@@ -36,7 +36,7 @@ const state = reactive({
   }[],
   delay: 10000
 });
-let timer: number;
+// let timer: number;
 const movingCircleRef = ref<HTMLDivElement>();
 onMounted(() => {
   const number = 10;
@@ -79,7 +79,9 @@ onMounted(() => {
   }
 });
 onBeforeUnmount(() => {
-  clearInterval(timer);
+  // if (timer) {
+  //   clearInterval(timer);
+  // }
 });
 </script>
 <style lang="css" scoped>
@@ -92,7 +94,7 @@ onBeforeUnmount(() => {
     filter: blur(100px);
     .circle-item {
       position: absolute;
-      transition: all cubic-bezier(.6,.15,.55,1.45) var(--animationDuration);
+      transition: all cubic-bezier(0.6, 0.15, 0.55, 1.45) var(--animationDuration);
       transform: translate(-50%, -50%);
       border-radius: 50%;
       opacity: 0.05;
