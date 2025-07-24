@@ -99,11 +99,11 @@ defineExpose({
       position: relative;
       color: var(--content-text-color);
 
-      // > div {
-      //   width: 100%;
-      //   height: 100%;
-      //   overflow: auto;
-      // }
+      > div {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
       .router-loading {
         position: absolute;
         top: 0;

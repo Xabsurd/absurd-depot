@@ -98,6 +98,16 @@
             "path": "watermarkEditor",
             "name": "tools-image-watermarkEditor",
             "component": "/src/views/tools/image/WatermarkEditor.vue"
+          },
+          {
+            "path": "stitchingImage",
+            "name": "tools-image-stitchingImage",
+            "component": "/src/views/tools/image/StitchingImage.vue"
+          },
+          {
+            "path": "colorSelection",
+            "name": "tools-image-colorSelection",
+            "component": "/src/views/tools/image/ColorSelection.vue"
           }
         ]
       },
@@ -120,6 +130,16 @@
             "path": "passwordGenerator",
             "name": "tools-word-passwordGenerator",
             "component": "/src/views/tools/word/PasswordGenerator.vue"
+          },
+          {
+            "path": "formatText",
+            "name": "tools-word-formatText",
+            "component": "/src/views/tools/word/FormatText.vue"
+          },
+          {
+            "path": "textColorFormatter",
+            "name": "tools-word-textColorFormatter",
+            "component": "/src/views/tools/word/TextColorFormatter.vue"
           }
         ]
       }

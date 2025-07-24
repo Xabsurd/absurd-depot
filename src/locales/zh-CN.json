@@ -166,6 +166,10 @@
     "tools-image": "图片处理",
     "tools-image-grayscaleImage": "灰度图",
     "tools-image-watermarkEditor": "水印编辑器",
+    "tools-word": "文字工具",
+    "tools-word-passwordGenerator": "密码生成器",
+    "tools-word-formatText": "文本格式化",
+    "tools-word-textColorFormatter": "文字颜色格式化",
     "GIS": "GIS",
     "cesium": "Cesium",
     "openlayer": "OpenLayer"

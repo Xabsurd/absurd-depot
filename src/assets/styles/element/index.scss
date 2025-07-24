@@ -1,4 +1,4 @@
-$custonFontSzie: 16px;
+$customFontSzie: 16px;
 /* 只需要重写你需要的即可 */
 @forward 'element-plus/theme-chalk/src/common/var.scss' with (
   $colors: (
@@ -8,15 +8,15 @@ $custonFontSzie: 16px;
     )
   ),
   $font-size: (
-    'base': $custonFontSzie
+    'base': $customFontSzie
   ),
   $checkbox: (
-    'font-size': $custonFontSzie,
-    'input-height': $custonFontSzie,
-    'input-width': $custonFontSzie
+    'font-size': $customFontSzie,
+    'input-height': $customFontSzie,
+    'input-width': $customFontSzie
   ),
   $input-font-size: (
-    'large': $custonFontSzie
+    'large': $customFontSzie
   )
 );
 @use './dark.scss';

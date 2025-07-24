@@ -1,3 +1,11 @@
+
+<template>
+  <div class="box" ref="boxRef" @drop="boxDrop" @dragover="boxDragover" @click="handleClick">
+    <canvas ref="_canvas"></canvas>
+    <span v-if="!state.visible">点击或拖入图片</span>
+    <input type="file" ref="inputRef" @change="uploadImage" v-show="false" />
+  </div>
+</template>
 <script setup lang="ts">
 import { calculateCover } from '@/utils/opening';
 import { reactive, ref, onMounted } from 'vue';
@@ -85,13 +93,7 @@ function _render(img: HTMLImageElement) {
   }
 }
 </script>
-<template>
-  <div class="box" ref="boxRef" @drop="boxDrop" @dragover="boxDragover" @click="handleClick">
-    <canvas ref="_canvas"></canvas>
-    <span v-if="!state.visible">点击或拖入图片</span>
-    <input type="file" ref="inputRef" @change="uploadImage" v-show="false" />
-  </div>
-</template>
+
 <style scoped lang="scss">
 .box {
   width: 100%;
