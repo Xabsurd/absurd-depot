@@ -38,4 +38,4 @@ src/components/icons/dynamicIcons
 components.d.ts
 auto-imports.d.ts
 components.d.ts
-package-lock.json
+# package-lock.json
