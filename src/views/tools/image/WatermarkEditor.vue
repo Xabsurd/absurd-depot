@@ -52,7 +52,7 @@ onMounted(() => {
     ctx = _canvas.value.getContext('2d') as CanvasRenderingContext2D;
   }
 });
-function uploadFiles(files: File[] | null) {
+function uploadFiles(files: FileList | null) {
   if (files) {
     state.imageUrl = URL.createObjectURL(files[0]);
     state.image.src = state.imageUrl;
