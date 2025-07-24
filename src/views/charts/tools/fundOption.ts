@@ -1,4 +1,5 @@
-import type { IMinlineData, SinaDatum } from '@/api/finance/fund';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import type { SinaDatum } from '@/api/finance/fund';
 import type { ECOption } from '@/utils/customEcharts/line';
 import { dateFormat } from '@/utils/dataTools';
 import type { LineSeriesOption, TitleComponentOption } from 'echarts';
@@ -137,10 +138,7 @@ export function getJZGSOption(base: SinaDatum[]) {
     '净值估算 ' + dateFormat('YYYY-mm-dd', new Date());
   (chartOption.xAxis as CategoryAxisBaseOption).data = ArrayDowngrade(base, 'm');
   console.log((chartOption.xAxis as CategoryAxisBaseOption).data);
-  (chartOption.xAxis as CategoryAxisBaseOption).axisLabel!.formatter = function (
-    value: any,
-    index: any
-  ) {
+  (chartOption.xAxis as CategoryAxisBaseOption).axisLabel!.formatter = function (value: any) {
     // console.log(value);
     return value;
   };
@@ -157,7 +155,7 @@ export function getJZGSOption(base: SinaDatum[]) {
   )[0];
   (chartOption.series as LineSeriesOption[])[0].endLabel!.formatter = (param) => {
     // console.log(param);
-    return (param.data?.value as string) + '%';
+    return param.data + '%';
     // return a.percentage + (option.perc ? "" : "%");
   };
   (chartOption.tooltip as TooltipOption)!.formatter = (params) => {
@@ -169,7 +167,7 @@ export function getJZGSOption(base: SinaDatum[]) {
             item.marker +
             dateFormat('HH:MM:SS', new Date(Number(item.name))) +
             '<br/>估算净值: <strong>' +
-            item.data?.nav +
+            item.data +
             '</strong>' +
             '<br/>估算涨幅 : <strong>' +
             item.value +
@@ -182,7 +180,7 @@ export function getJZGSOption(base: SinaDatum[]) {
         params.marker +
         dateFormat('HH:MM:SS', new Date(Number(params.name))) +
         '<br/>估算净值: <strong>' +
-        params.data?.nav +
+        params.data +
         '</strong>' +
         '<br/>估算涨幅 : <strong>' +
         params.value +

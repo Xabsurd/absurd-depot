@@ -19,7 +19,7 @@
         </div>
       </div>
     </div>
-    <div class="chart-box" @scroll="scrollChange">
+    <div class="chart-box">
       <div class="chart-item" v-for="(item, index) in FundData" :key="index">
         <div class="chart-item-box" v-if="item.base.jzgs">
           <div class="chart-item-subtitle">
@@ -85,15 +85,9 @@
 </template>
 <script lang="ts" setup>
 import { getFundInfo, getFundjzgs } from '@/api/finance/fund';
-import { dateFormat, getEvalVariable } from '@/utils/dataTools';
+import { getEvalVariable } from '@/utils/dataTools';
 // import { mapState } from 'vuex';
-import {
-  getSPOption,
-  getACWTOption,
-  getDGTOption,
-  getJZGZOption,
-  type FundBaseData
-} from './fundOption';
+import { getSPOption, getACWTOption, getDGTOption, type FundBaseData } from './fundOption';
 import { computed, nextTick, reactive } from 'vue';
 import { useSettingStore } from '@/stores/setting';
 import chartThemes from '../chartThemes';
@@ -105,10 +99,10 @@ const FundData = reactive<{
   [key: string]: {
     base: FundBaseData;
     chart?: {
-      acwt?: any;
-      dgt?: any;
-      jzgs?: any;
-      sp?: any;
+      acwt?: echarts.ECharts;
+      dgt?: echarts.ECharts;
+      jzgs?: echarts.ECharts;
+      sp?: echarts.ECharts;
     };
   };
 }>({});
@@ -123,7 +117,7 @@ const settingStore = useSettingStore();
 const chartTheme = computed(() => {
   return chartThemes[settingStore.appliedTheme];
 });
-function handleAdd(code: any) {
+function handleAdd(code: string | number) {
   let fundList = JSON.parse(localStorage.getItem('fundList')!);
   if (!fundList) {
     fundList = [];
@@ -134,7 +128,7 @@ function handleAdd(code: any) {
   }
   addFund(code);
 }
-function addFund(code: string) {
+function addFund(code: string | number) {
   if (!FundData[code]) {
     getFundInfo(code).then((response) => {
       FundData[code] = { base: getEvalVariable(response.data) };
@@ -164,8 +158,8 @@ function addFund(code: string) {
         const option2 = getDGTOption(FundData[code].base.Data_grandTotal);
         option2.textStyle = chartTheme.value.textStyle;
         (option2.title as TitleComponentOption).textStyle = chartTheme.value.textStyle;
-        FundData[code].chart.acwt.setOption(option1);
-        FundData[code].chart.dgt.setOption(option2);
+        FundData[code].chart.acwt?.setOption(option1);
+        FundData[code].chart.dgt?.setOption(option2);
         getFundjzgs(code).then((jzgs) => {
           console.log(jzgs.data.result.data);
           if (jzgs.data.result.data.length > 0) {
@@ -188,7 +182,7 @@ function addFund(code: string) {
     });
   }
 }
-function removeFund(code: string) {
+function removeFund(code: string | number) {
   delete FundData[code];
   // this.changeData();
   const fundList = [];

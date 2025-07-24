@@ -84,7 +84,7 @@ export class Calculate {
     points: Cartesian3[],
     targetHeight: number
   ): Promise<earthVolumeAnalysisResult> {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       let fillVolume = 0;
       let cutVolume = 0;
       if (!this.viewer.terrainProvider.availability) {
@@ -110,7 +110,7 @@ export class Calculate {
       let cartographic: Cartographic;
       let bottomArea;
       //源数据
-      const subTrianglePositions = geom?.attributes.position.values;
+      const subTrianglePositions = geom?.attributes.position?.values;
       let allArea = 0;
       if (!geom?.indices || !subTrianglePositions) {
         return;
