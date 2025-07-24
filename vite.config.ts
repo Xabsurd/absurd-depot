@@ -11,6 +11,7 @@ import UnoCSS from 'unocss/vite';
 import copyPlugin from 'rollup-plugin-copy';
 // https://vite.dev/config/
 export default defineConfig({
+  base: process.env.NODE_ENV === 'production' ? '/absurd-depot/' : '/',
   plugins: [
     vue(),
     UnoCSS(),
